@@ -14,11 +14,11 @@ contract CounterTest is Test {
 
     function testIncrement() public {
         counter.increment();
-        assertEq(counter.number(), 1);
+        assertEq(counter.getNumber(), 1);
     }
 
     function testSetNumber(uint256 x) public {
         counter.setNumber(x);
-        assertEq(counter.number(), x);
+        assertEq(counter.getNumber(), x);
     }
 }
