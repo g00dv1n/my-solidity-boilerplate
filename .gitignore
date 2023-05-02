@@ -10,5 +10,10 @@ out/
 # Docs
 docs/
 
-# Dotenv file
+# Files
 .env
+.DS_Store
+
+# Node
+node_modules/
+
