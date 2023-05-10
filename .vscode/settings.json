@@ -4,5 +4,6 @@
   "solidity.packageDefaultDependenciesDirectory": "lib",
   "search.exclude": { "lib": true },
   "solidity.formatter": "forge",
+  "solidity.linter": "",
   "solidity.compileUsingRemoteVersion": "v0.8.19"
 }

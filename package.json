@@ -1,0 +1,19 @@
+{
+  "name": "my-solidity-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "localnet": "anvil",
+    "solhint": "npx solhint \"{script,src}/**/*.sol\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "solhint": "^3.4.1"
+  }
+}
