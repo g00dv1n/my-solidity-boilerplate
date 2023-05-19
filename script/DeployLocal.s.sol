@@ -10,6 +10,8 @@ contract DeployLocal is BaseScript {
     }
 
     function run() public broadcaster returns (SolmateNFT nft) {
-        nft = new SolmateNFT("nft.xyz/", "TestNFT", "TSTN", 0.01 ether, 111);
+        string memory mferMetadataSample = "https://ipfs.io/ipfs/QmWiQE65tmpYzcokCheQmng2DCM33DEhjXcPB6PanwpAZo/5688";
+
+        nft = new SolmateNFT(mferMetadataSample, "TestNFT", "TSTN", 0.0001 ether, 69);
     }
 }
