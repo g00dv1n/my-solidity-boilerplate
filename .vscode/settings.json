@@ -1,7 +1,5 @@
 {
   "editor.formatOnSave": true,
   "search.exclude": { "lib": true },
-  "solidity.formatter": "forge",
-  "solidity.linter": "",
-  "solidity.compileUsingRemoteVersion": "v0.8.19+commit.7dd6d404"
+  "solidity.formatter": "forge"
 }
