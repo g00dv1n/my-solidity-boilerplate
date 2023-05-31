@@ -3,10 +3,10 @@ pragma solidity ^0.8.19;
 
 import { ERC721A } from "ERC721A/ERC721A.sol";
 import { Owned } from "./mixins/Owned.sol";
-import { EthReciever } from "./mixins/EthReciever.sol";
+import { Defaults } from "./mixins/Defaults.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract BatchMintNFT is ERC721A, Owned, EthReciever, Withdraw {
+contract BatchMintNFT is ERC721A, Owned, Defaults, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 

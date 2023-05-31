@@ -4,10 +4,10 @@ pragma solidity ^0.8.19;
 import { ERC721 } from "solmate/tokens/ERC721.sol";
 import { LibString } from "solmate/utils/LibString.sol";
 import { Owned } from "./mixins/Owned.sol";
-import { EthReciever } from "./mixins/EthReciever.sol";
+import { Defaults } from "./mixins/Defaults.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract SolmateNFT is ERC721, Owned, EthReciever, Withdraw {
+contract SolmateNFT is ERC721, Owned, Defaults, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 
