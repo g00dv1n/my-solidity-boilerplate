@@ -15,6 +15,6 @@ contract DeployTestnet is BaseScript {
         uint256 price = 0 ether;
         uint256 supply = 99;
 
-        nft = new BatchMintNFT(unrevealedURI, "ERC721A_NFT_Batch", "Batch", price, supply);
+        nft = new BatchMintNFT("ERC721A_NFT_Batch", "Batch", unrevealedURI, price, supply);
     }
 }

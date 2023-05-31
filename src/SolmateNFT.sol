@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 
 import { ERC721 } from "solmate/tokens/ERC721.sol";
 import { LibString } from "solmate/utils/LibString.sol";
-import { Owned } from "solmate/auth/Owned.sol";
+import { Owned } from "./mixins/Owned.sol";
 import { EthReciever } from "./mixins/EthReciever.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
@@ -21,9 +21,9 @@ contract SolmateNFT is ERC721, Owned, EthReciever, Withdraw {
     error MintZero();
 
     constructor(
-        string memory _unrevealedURI,
         string memory _name,
         string memory _symbol,
+        string memory _unrevealedURI,
         uint256 _mintPrice,
         uint256 _maxSupply
     )
@@ -88,6 +88,11 @@ contract SolmateNFT is ERC721, Owned, EthReciever, Withdraw {
         }
 
         return string(abi.encodePacked(baseURI, LibString.toString(tokenId), ".json"));
+    }
+
+    // Need to override the owner for correct use in the next inheritance
+    function owner() public view virtual override returns (address) {
+        return super.owner();
     }
 
     //=========================================================================

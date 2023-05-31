@@ -12,6 +12,6 @@ contract DeployLocal is BaseScript {
     function run() public broadcaster returns (BatchMintNFT nft) {
         string memory mferMetadataSample = "https://ipfs.io/ipfs/QmWiQE65tmpYzcokCheQmng2DCM33DEhjXcPB6PanwpAZo/5688";
 
-        nft = new BatchMintNFT(mferMetadataSample, "TestNFT", "TSTN", 0.0001 ether, 69);
+        nft = new BatchMintNFT("TestNFT", "TSTN", mferMetadataSample, 0.0001 ether, 69);
     }
 }

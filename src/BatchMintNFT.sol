@@ -2,7 +2,7 @@
 pragma solidity ^0.8.19;
 
 import { ERC721A } from "ERC721A/ERC721A.sol";
-import { Owned } from "solmate/auth/Owned.sol";
+import { Owned } from "./mixins/Owned.sol";
 import { EthReciever } from "./mixins/EthReciever.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
@@ -19,9 +19,9 @@ contract BatchMintNFT is ERC721A, Owned, EthReciever, Withdraw {
     error MaxMintPerTx();
 
     constructor(
-        string memory _unrevealedURI,
         string memory _name,
         string memory _symbol,
+        string memory _unrevealedURI,
         uint256 _mintPrice,
         uint256 _maxSupply
     )
@@ -71,6 +71,11 @@ contract BatchMintNFT is ERC721A, Owned, EthReciever, Withdraw {
         }
 
         return string(abi.encodePacked(baseURI, _toString(tokenId), ".json"));
+    }
+
+    // Need to override the owner for correct use in the next inheritance
+    function owner() public view virtual override returns (address) {
+        return super.owner();
     }
 
     //=========================================================================
