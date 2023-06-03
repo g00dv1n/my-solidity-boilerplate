@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.19;
 
-import { BatchMintNFT } from "@src/BatchMintNFT.sol";
+import { BaseERC721A } from "@src/BaseERC721A.sol";
 import { BaseScript } from "./Base.s.sol";
 
 contract DeployLocal is BaseScript {
@@ -9,9 +9,9 @@ contract DeployLocal is BaseScript {
         useMnemonic();
     }
 
-    function run() public broadcaster returns (BatchMintNFT nft) {
+    function run() public broadcaster returns (BaseERC721A nft) {
         string memory mferMetadataSample = "https://ipfs.io/ipfs/QmWiQE65tmpYzcokCheQmng2DCM33DEhjXcPB6PanwpAZo/5688";
 
-        nft = new BatchMintNFT("TestNFT", "TSTN", mferMetadataSample, 0.0001 ether, 69);
+        nft = new BaseERC721A("TestNFT", "TSTN", mferMetadataSample, 0.0001 ether, 69);
     }
 }

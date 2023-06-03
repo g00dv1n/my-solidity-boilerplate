@@ -6,7 +6,7 @@ import { Owned } from "./mixins/Owned.sol";
 import { Defaults } from "./mixins/Defaults.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract BatchMintNFT is ERC721A, Owned, Defaults, Withdraw {
+contract BaseERC721A is ERC721A, Owned, Defaults, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 

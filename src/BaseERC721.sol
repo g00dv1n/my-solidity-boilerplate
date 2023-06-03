@@ -7,7 +7,7 @@ import { Owned } from "./mixins/Owned.sol";
 import { Defaults } from "./mixins/Defaults.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract SolmateNFT is ERC721, Owned, Defaults, Withdraw {
+contract BaseERC721 is ERC721, Owned, Defaults, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 

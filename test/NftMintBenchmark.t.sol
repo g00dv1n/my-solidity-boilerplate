@@ -7,8 +7,8 @@ import "solmate/tokens/ERC721.sol";
 
 import "./utils/ExtendedTest.sol";
 
-import "@src/BatchMintNFT.sol";
-import "@src/SolmateNFT.sol";
+import "@src/BaseERC721A.sol";
+import "@src/BaseERC721.sol";
 
 interface IMintTest {
     function mintPublic(uint256 qty) external payable;
@@ -18,16 +18,16 @@ interface IMintTest {
 contract NftTest is ExtendedTest {
     using stdStorage for StdStorage;
 
-    BatchMintNFT public nft1;
-    SolmateNFT public nft2;
+    BaseERC721 public nft1;
+    BaseERC721A public nft2;
     uint256 public mp = 0.01 ether;
     uint256 public supply = 5555;
 
     receive() external payable { }
 
     function setUp() public {
-        nft1 = new BatchMintNFT("TestNFT", "TSTN", "nft.xyz/", mp, supply);
-        nft2 = new SolmateNFT("TestNFT", "TSTN", "nft.xyz/", mp, supply);
+        nft1 = new BaseERC721("TestNFT", "TSTN", "nft.xyz/", mp, supply);
+        nft2 = new BaseERC721A("TestNFT", "TSTN", "nft.xyz/", mp, supply);
     }
 
     function mintBulk1(uint256 qty) public {
