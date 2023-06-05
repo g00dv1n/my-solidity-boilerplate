@@ -15,7 +15,7 @@ abstract contract Owned {
                             OWNERSHIP STORAGE
     //////////////////////////////////////////////////////////////*/
 
-    address public _owner;
+    address internal _owner;
 
     modifier onlyOwner() virtual {
         require(msg.sender == _owner, "UNAUTHORIZED");

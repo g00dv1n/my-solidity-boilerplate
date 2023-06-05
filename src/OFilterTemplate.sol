@@ -7,7 +7,7 @@ import { UpdatableOperatorFilterer } from "operator-filter-registry/src/Updatabl
 import { RevokableDefaultOperatorFilterer } from "operator-filter-registry/src/RevokableDefaultOperatorFilterer.sol";
 
 contract OFilterTemplate is BaseERC721A, RevokableDefaultOperatorFilterer {
-    constructor(string memory _unrevealedURI) BaseERC721A("OFilterTemplate", "OFT", _unrevealedURI, 1 gwei, 100) { }
+    constructor(string memory _unrevealedURI) BaseERC721A("OFilterTemplate", "OFT", _unrevealedURI, 0, 100) { }
 
     //=========================================================================
     // DEFAULT OVERRIDES FOR OPERATOR FILTER

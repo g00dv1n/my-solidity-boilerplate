@@ -2,7 +2,7 @@
 pragma solidity >=0.8.19;
 
 import { BaseERC721A } from "@src/BaseERC721A.sol";
-import { BaseScript } from "./Base.s.sol";
+import { BaseScript } from "./BaseScript.s.sol";
 
 contract DeployLocal is BaseScript {
     constructor() {
