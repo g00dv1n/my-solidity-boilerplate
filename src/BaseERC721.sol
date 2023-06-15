@@ -3,11 +3,12 @@ pragma solidity ^0.8.19;
 
 import { ERC721 } from "solmate/tokens/ERC721.sol";
 import { LibString } from "solmate/utils/LibString.sol";
+import { IBaseERC721Mintable } from "./interfaces/IBaseERC721Mintable.sol";
 import { Owned } from "./mixins/Owned.sol";
 import { Defaults } from "./mixins/Defaults.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract BaseERC721 is ERC721, Owned, Defaults, Withdraw {
+contract BaseERC721 is ERC721, IBaseERC721Mintable, Owned, Defaults, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 
