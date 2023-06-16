@@ -19,8 +19,8 @@ interface IMintTest {
 contract NftTest is ExtendedTest {
     using stdStorage for StdStorage;
 
-    ExtERC721 public nft1;
-    ExtERC721A public nft2;
+    ExtERC721 public nft;
+    ExtERC721A public nftA;
     uint256 public mp = 0.01 ether;
     uint256 public supply = 5555;
     uint256[] public bulkMintTests = [1, 2, 4, 8, 10, 12, 14, 16, 18, 20];
@@ -28,22 +28,22 @@ contract NftTest is ExtendedTest {
     receive() external payable { }
 
     function setUp() public {
-        nft1 = new ExtERC721("TestNFT", "TSTN", "nft.xyz/", mp, supply);
-        nft2 = new ExtERC721A("TestNFT", "TSTN", "nft.xyz/", mp, supply);
+        nft = new ExtERC721("TestNFT", "TSTN", "nft.xyz/", mp, supply);
+        nftA = new ExtERC721A("TestNFT", "TSTN", "nft.xyz/", mp, supply);
     }
 
-    function mintBulk(uint256 qty, IExtERC721Mintable nft) public {
+    function mintBulk(uint256 qty, IExtERC721Mintable _nft) public {
         uint256 bulkMintAmount = qty;
         address owner = _randomNonZeroAddress();
 
         _prankAndFund(owner);
-        nft.mintPublic{ value: bulkMintAmount * mp }(bulkMintAmount);
+        _nft.mintPublic{ value: bulkMintAmount * mp }(bulkMintAmount);
     }
 
     function testMintBenchmark() public {
         for (uint256 i = 0; i < bulkMintTests.length; i++) {
-            mintBulk(bulkMintTests[i], nft1);
-            mintBulk(bulkMintTests[i], nft2);
+            mintBulk(bulkMintTests[i], nft);
+            mintBulk(bulkMintTests[i], nftA);
         }
     }
 }
