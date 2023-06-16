@@ -7,9 +7,9 @@ import "solmate/tokens/ERC721.sol";
 
 import "./utils/ExtendedTest.sol";
 
-import "@src/interfaces/IBaseERC721Mintable.sol";
-import "@src/BaseERC721A.sol";
-import "@src/BaseERC721.sol";
+import "@src/interfaces/IExtERC721Mintable.sol";
+import "@src/ExtERC721A.sol";
+import "@src/ExtERC721.sol";
 
 interface IMintTest {
     function mintPublic(uint256 qty) external payable;
@@ -19,8 +19,8 @@ interface IMintTest {
 contract NftTest is ExtendedTest {
     using stdStorage for StdStorage;
 
-    BaseERC721 public nft1;
-    BaseERC721A public nft2;
+    ExtERC721 public nft1;
+    ExtERC721A public nft2;
     uint256 public mp = 0.01 ether;
     uint256 public supply = 5555;
     uint256[] public bulkMintTests = [1, 2, 4, 8, 10, 12, 14, 16, 18, 20];
@@ -28,11 +28,11 @@ contract NftTest is ExtendedTest {
     receive() external payable { }
 
     function setUp() public {
-        nft1 = new BaseERC721("TestNFT", "TSTN", "nft.xyz/", mp, supply);
-        nft2 = new BaseERC721A("TestNFT", "TSTN", "nft.xyz/", mp, supply);
+        nft1 = new ExtERC721("TestNFT", "TSTN", "nft.xyz/", mp, supply);
+        nft2 = new ExtERC721A("TestNFT", "TSTN", "nft.xyz/", mp, supply);
     }
 
-    function mintBulk(uint256 qty, IBaseERC721Mintable nft) public {
+    function mintBulk(uint256 qty, IExtERC721Mintable nft) public {
         uint256 bulkMintAmount = qty;
         address owner = _randomNonZeroAddress();
 

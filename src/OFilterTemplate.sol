@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import { BaseERC721A } from "./BaseERC721A.sol";
+import { ExtERC721A } from "./ExtERC721A.sol";
 
 import { UpdatableOperatorFilterer } from "operator-filter-registry/src/UpdatableOperatorFilterer.sol";
 import { RevokableDefaultOperatorFilterer } from "operator-filter-registry/src/RevokableDefaultOperatorFilterer.sol";
 
-contract OFilterTemplate is BaseERC721A, RevokableDefaultOperatorFilterer {
-    constructor(string memory _unrevealedURI) BaseERC721A("OFilterTemplate", "OFT", _unrevealedURI, 0, 100) { }
+contract OFilterTemplate is ExtERC721A, RevokableDefaultOperatorFilterer {
+    constructor(string memory _unrevealedURI) ExtERC721A("OFilterTemplate", "OFT", _unrevealedURI, 0, 100) { }
 
     //=========================================================================
     // DEFAULT OVERRIDES FOR OPERATOR FILTER
@@ -61,7 +61,7 @@ contract OFilterTemplate is BaseERC721A, RevokableDefaultOperatorFilterer {
         super.safeTransferFrom(from, to, tokenId, data);
     }
 
-    function owner() public view override(BaseERC721A, UpdatableOperatorFilterer) returns (address) {
-        return BaseERC721A.owner();
+    function owner() public view override(ExtERC721A, UpdatableOperatorFilterer) returns (address) {
+        return ExtERC721A.owner();
     }
 }

@@ -2,12 +2,12 @@
 pragma solidity ^0.8.19;
 
 import { ERC721A } from "ERC721A/ERC721A.sol";
-import { IBaseERC721Mintable } from "./interfaces/IBaseERC721Mintable.sol";
+import { IExtERC721Mintable } from "./interfaces/IExtERC721Mintable.sol";
 import { Owned } from "./mixins/Owned.sol";
 import { Defaults } from "./mixins/Defaults.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract BaseERC721A is ERC721A, IBaseERC721Mintable, Owned, Defaults, Withdraw {
+contract ExtERC721A is ERC721A, IExtERC721Mintable, Owned, Defaults, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 
