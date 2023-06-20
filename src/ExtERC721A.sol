@@ -74,9 +74,13 @@ contract ExtERC721A is ERC721A, IExtERC721Mintable, Owned, Defaults, Withdraw {
         return string(abi.encodePacked(baseURI, _toString(tokenId), ".json"));
     }
 
-    // Need to override the owner for correct use in the next inheritance
+    // Need to override the owner and supportsInterface for correct use in the next inheritance
     function owner() public view virtual override returns (address) {
         return super.owner();
+    }
+
+    function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+        return super.supportsInterface(interfaceId);
     }
 
     //=========================================================================
