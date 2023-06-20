@@ -9,7 +9,7 @@ import { UpdatableOperatorFilterer } from "operator-filter-registry/src/Updatabl
 import { RevokableDefaultOperatorFilterer } from "operator-filter-registry/src/RevokableDefaultOperatorFilterer.sol";
 
 contract OFilterTemplate is ExtERC721A, ERC2981, RevokableDefaultOperatorFilterer {
-    constructor(string memory _unrevealedURI) ExtERC721A("OFilterTemplate", "OFT", _unrevealedURI, 0, 100) {
+    constructor(string memory _unrevealedURI) ExtERC721A("OFilterTemplate", "OFT", _unrevealedURI, 0, 777) {
         // 5% royalties for deployer
         _setDefaultRoyalty(msg.sender, 500);
     }

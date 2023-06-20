@@ -10,6 +10,7 @@ import "./utils/ExtendedTest.sol";
 import "@src/interfaces/IExtERC721Mintable.sol";
 import "@src/ExtERC721A.sol";
 import "@src/ExtERC721.sol";
+import "@src/OFilterTemplate.sol";
 
 interface IMintTest {
     function mintPublic(uint256 qty) external payable;
@@ -21,6 +22,8 @@ contract NftTest is ExtendedTest {
 
     ExtERC721 public nft;
     ExtERC721A public nftA;
+    OFilterTemplate public nftOFilter;
+
     uint256 public mp = 0.01 ether;
     uint256 public supply = 5555;
     uint256[] public bulkMintTests = [1, 2, 4, 8, 10, 12, 14, 16, 18, 20];
@@ -30,6 +33,7 @@ contract NftTest is ExtendedTest {
     function setUp() public {
         nft = new ExtERC721("TestNFT", "TSTN", "nft.xyz/", mp, supply);
         nftA = new ExtERC721A("TestNFT", "TSTN", "nft.xyz/", mp, supply);
+        nftOFilter = new OFilterTemplate("nft.xyz/");
     }
 
     function mintBulk(uint256 qty, IExtERC721Mintable _nft) public {
@@ -44,6 +48,7 @@ contract NftTest is ExtendedTest {
         for (uint256 i = 0; i < bulkMintTests.length; i++) {
             mintBulk(bulkMintTests[i], nft);
             mintBulk(bulkMintTests[i], nftA);
+            mintBulk(bulkMintTests[i], nftOFilter);
         }
     }
 }

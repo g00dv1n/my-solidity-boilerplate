@@ -5,7 +5,7 @@
     solc = "0.8.19"
     optimizer = true
     optimizer_runs = 10_000
-    gas_reports = ["ExtERC721A", "ExtERC721"]
+    gas_reports = ["ExtERC721A", "ExtERC721", "OFilterTemplate"]
 
 [fmt]
   bracket_spacing = true
