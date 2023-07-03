@@ -2,10 +2,11 @@
     src = 'src'
     out = 'out'
     libs = ['lib']
-    solc = "0.8.19"
+    solc = "0.8.20"
+    evm_version = "shanghai"
     optimizer = true
     optimizer_runs = 10_000
-    gas_reports = ["ExtERC721A", "ExtERC721", "OFilterTemplate"]
+    gas_reports = ["ExtERC721A", "ExtERC721", "OFilterTemplate", "SimpleMerkleUsage"]
 
 [fmt]
   bracket_spacing = true
