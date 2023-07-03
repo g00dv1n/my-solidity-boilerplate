@@ -10,7 +10,7 @@ import "./utils/ExtendedTest.sol";
 import "@src/mixins/MerkleProofGuard.sol";
 
 contract SimpleMerkleUsage is MerkleProofGuard {
-    bytes32 merkleRoot = 0xd2525192efc50f4e4b22f4c5c8188ebafb1ede3a90842f8788c7ae1422cca234;
+    bytes32 merkleRoot = 0xe355d00a8bf56103ff770f6c6acf4b3a0d85927f4054060a526106470c50ee18;
 
     function fnWithoutMerkle() public { }
 
@@ -28,15 +28,15 @@ contract MerkleTest is ExtendedTest {
 
     SimpleMerkleUsage smu = new SimpleMerkleUsage();
 
+    address validAddr = 0xB7998316a85884122769878dBa9484a1D2f25b80;
+
+    bytes32[] validProof = [
+        bytes32(0x93230d0b2377404a36412e26d231de4c7e1a9fb62e227b420200ee950a5ca9c0),
+        bytes32(0xee068f44d79b0b5ec5c9fdce424d1cb399ed31b481f41d901b2d90447857ca89)
+    ];
+
     function testMerkleGasUsage() public {
-        address validAddr = 0xB7998316a85884122769878dBa9484a1D2f25b80;
-
-        bytes32[] memory proof = new bytes32[](2);
-
-        proof[0] = bytes32(0x5931b4ed56ace4c46b68524cb5bcbf4195f1bbaacbe5228fbd090546c88dd229);
-        proof[1] = bytes32(0x050bafc3fbff3f13ae92e34d22935ed341803bcf7a4b840ce8ba265bf765bf79);
-
         smu.fnWithoutMerkle();
-        smu.fnWithMerkle(proof, validAddr);
+        smu.fnWithMerkle(validProof, validAddr);
     }
 }
