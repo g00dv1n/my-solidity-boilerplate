@@ -12,6 +12,6 @@ contract DeployLocal is BaseScript {
     function run() public broadcaster returns (ExtERC721A nft) {
         string memory mferMetadataSample = "https://ipfs.io/ipfs/QmWiQE65tmpYzcokCheQmng2DCM33DEhjXcPB6PanwpAZo/5688";
 
-        nft = new ExtERC721A("TestNFT", "TSTN", mferMetadataSample, 0.0001 ether, 69);
+        nft = new ExtERC721A("TestNFT", "TSTN", mferMetadataSample, 0, 99);
     }
 }

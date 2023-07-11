@@ -4,10 +4,10 @@ pragma solidity ^0.8.19;
 import { ERC721A } from "ERC721A/ERC721A.sol";
 import { IExtERC721Mintable } from "./interfaces/IExtERC721Mintable.sol";
 import { Owned } from "./mixins/Owned.sol";
-import { Defaults } from "./mixins/Defaults.sol";
+import { Receive } from "./mixins/Receive.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract ExtERC721A is ERC721A, IExtERC721Mintable, Owned, Defaults, Withdraw {
+contract ExtERC721A is ERC721A, IExtERC721Mintable, Owned, Receive, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 
@@ -68,7 +68,7 @@ contract ExtERC721A is ERC721A, IExtERC721Mintable, Owned, Defaults, Withdraw {
         if (!_exists(tokenId)) revert URIQueryForNonexistentToken();
 
         if (bytes(baseURI).length == 0) {
-            return string(abi.encodePacked(unrevealedURI));
+            return unrevealedURI;
         }
 
         return string(abi.encodePacked(baseURI, _toString(tokenId), ".json"));

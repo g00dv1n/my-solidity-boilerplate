@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-abstract contract Defaults {
+abstract contract Receive {
     //=========================================================================
-    // DEFAULT FUNCTIONS
+    // DEFAULT RECEIVE FUNCTION
     //=========================================================================
     receive() external payable { } // msg.data must be empty
-    fallback() external payable { } // when msg.data is not empty
 }

@@ -5,10 +5,10 @@ import { ERC721 } from "solmate/tokens/ERC721.sol";
 import { LibString } from "solmate/utils/LibString.sol";
 import { IExtERC721Mintable } from "./interfaces/IExtERC721Mintable.sol";
 import { Owned } from "./mixins/Owned.sol";
-import { Defaults } from "./mixins/Defaults.sol";
+import { Receive } from "./mixins/Receive.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
-contract ExtERC721 is ERC721, IExtERC721Mintable, Owned, Defaults, Withdraw {
+contract ExtERC721 is ERC721, IExtERC721Mintable, Owned, Receive, Withdraw {
     string public baseURI;
     string public unrevealedURI;
 
@@ -85,7 +85,7 @@ contract ExtERC721 is ERC721, IExtERC721Mintable, Owned, Defaults, Withdraw {
         }
 
         if (bytes(baseURI).length == 0) {
-            return string(abi.encodePacked(unrevealedURI));
+            return unrevealedURI;
         }
 
         return string(abi.encodePacked(baseURI, LibString.toString(tokenId), ".json"));

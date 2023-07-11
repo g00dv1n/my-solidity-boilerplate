@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
 import "forge-std/Test.sol";
@@ -11,11 +11,6 @@ import "@src/interfaces/IExtERC721Mintable.sol";
 import "@src/ExtERC721A.sol";
 import "@src/ExtERC721.sol";
 import "@src/OFilterTemplate.sol";
-
-interface IMintTest {
-    function mintPublic(uint256 qty) external payable;
-    function balanceOf(address owner) external view returns (uint256);
-}
 
 contract NftTest is ExtendedTest {
     using stdStorage for StdStorage;
