@@ -1,37 +1,37 @@
 [profile.default]
-    src = 'src'
-    out = 'out'
-    libs = ['lib']
-    solc = "0.8.19"
-    evm_version = "shanghai"
-    optimizer = true
-    optimizer_runs = 10_000
-    gas_reports = ["ExtERC721A", "ExtERC721", "OFilterTemplate", "SimpleMerkleUsage"]
+evm_version = "shanghai"
+gas_reports = ["ExtERC721A", "ExtERC721", "OFilterTemplate", "SimpleMerkleUsage"]
+libs = ['lib']
+optimizer = true
+optimizer_runs = 10_000
+out = 'out'
+solc = "0.8.21"
+src = 'src'
 
 [fmt]
-  bracket_spacing = true
-  int_types = "long"
-  line_length = 120
-  multiline_func_header = "all"
-  number_underscore = "thousands"
-  quote_style = "double"
-  tab_width = 4
-  wrap_comments = true
+bracket_spacing = true
+int_types = "long"
+line_length = 120
+multiline_func_header = "all"
+number_underscore = "thousands"
+quote_style = "double"
+tab_width = 4
+wrap_comments = true
 
 [etherscan]
-  arbitrum = { key = "${API_KEY_ARBISCAN}" }
-  goerli = { key = "${API_KEY_ETHERSCAN}" }
-  mainnet = { key = "${API_KEY_ETHERSCAN}" }
-  polygon = { key = "${API_KEY_POLYGONSCAN}" }
-  sepolia = { key = "${API_KEY_ETHERSCAN}" }
+arbitrum = {key = "${API_KEY_ARBISCAN}"}
+goerli = {key = "${API_KEY_ETHERSCAN}"}
+mainnet = {key = "${API_KEY_ETHERSCAN}"}
+polygon = {key = "${API_KEY_POLYGONSCAN}"}
+sepolia = {key = "${API_KEY_ETHERSCAN}"}
 
 [rpc_endpoints]
-  arbitrum = "https://arbitrum-mainnet.infura.io/v3/${API_KEY_INFURA}"
-  goerli = "https://goerli.infura.io/v3/${API_KEY_INFURA}"
-  localhost = "http://localhost:8545"
-  mainnet = "https://eth-mainnet.g.alchemy.com/v2/${API_KEY_ALCHEMY}"
-  optimism = "https://optimism-mainnet.infura.io/v3/${API_KEY_INFURA}"
-  polygon = "https://polygon-mainnet.infura.io/v3/${API_KEY_INFURA}"
-  sepolia = "https://sepolia.infura.io/v3/${API_KEY_INFURA}"
+arbitrum = "https://arbitrum-mainnet.infura.io/v3/${API_KEY_INFURA}"
+goerli = "https://goerli.infura.io/v3/${API_KEY_INFURA}"
+localhost = "http://localhost:8545"
+mainnet = "https://eth-mainnet.g.alchemy.com/v2/${API_KEY_ALCHEMY}"
+optimism = "https://optimism-mainnet.infura.io/v3/${API_KEY_INFURA}"
+polygon = "https://polygon-mainnet.infura.io/v3/${API_KEY_INFURA}"
+sepolia = "https://sepolia.infura.io/v3/${API_KEY_INFURA}"
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
