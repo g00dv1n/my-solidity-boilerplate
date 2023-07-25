@@ -9,17 +9,18 @@ import { Receive } from "./mixins/Receive.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
 contract ExtERC721 is ERC721, IExtERC721Mintable, Owned, Receive, Withdraw {
-    string public baseURI;
-    string public unrevealedURI;
+    error MintPriceNotPaid();
+    error MaxSupply();
+    error NonExistentTokenURI();
+    error MintZero();
+    error MaxMintPerTx();
 
     uint256 public immutable maxSupply;
     uint256 public mintPrice;
     uint256 private currentIndex = 0;
 
-    error MintPriceNotPaid();
-    error MaxSupply();
-    error NonExistentTokenURI();
-    error MintZero();
+    string public baseURI;
+    string public unrevealedURI;
 
     constructor(
         string memory _name,
@@ -44,9 +45,14 @@ contract ExtERC721 is ERC721, IExtERC721Mintable, Owned, Receive, Withdraw {
     //=========================================================================
     modifier supplyAndPriceChecks(uint256 qty) {
         if (qty == 0) revert MintZero();
+        if (qty > _maxMintPerTx()) revert MaxMintPerTx();
         if (currentIndex + qty > maxSupply) revert MaxSupply();
         if (msg.value < mintPrice * qty) revert MintPriceNotPaid();
         _;
+    }
+
+    function _maxMintPerTx() internal view virtual returns (uint256) {
+        return 20;
     }
 
     function mintPublic(uint256 qty) external payable virtual supplyAndPriceChecks(qty) {
@@ -89,6 +95,22 @@ contract ExtERC721 is ERC721, IExtERC721Mintable, Owned, Receive, Withdraw {
         }
 
         return string(abi.encodePacked(baseURI, LibString.toString(tokenId), ".json"));
+    }
+
+    function totalSupply() public view virtual returns (uint256) {
+        return currentIndex;
+    }
+
+    function mintInfo()
+        public
+        view
+        virtual
+        returns (uint256 maxSupply_, uint256 totalMinted_, uint256 mintPrice_, uint256 maxMintPerTx_)
+    {
+        maxSupply_ = maxSupply;
+        totalMinted_ = totalSupply();
+        mintPrice_ = mintPrice;
+        maxMintPerTx_ = _maxMintPerTx();
     }
 
     // Need to override the owner and supportsInterface for correct use in the next inheritance

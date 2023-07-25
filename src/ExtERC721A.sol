@@ -8,16 +8,16 @@ import { Receive } from "./mixins/Receive.sol";
 import { Withdraw } from "./mixins/Withdraw.sol";
 
 contract ExtERC721A is ERC721A, IExtERC721Mintable, Owned, Receive, Withdraw {
-    string public baseURI;
-    string public unrevealedURI;
-
-    uint256 public immutable maxSupply;
-    uint256 public mintPrice;
-
     error MintPriceNotPaid();
     error MaxSupply();
     error MintZero();
     error MaxMintPerTx();
+
+    uint256 public immutable maxSupply;
+    uint256 public mintPrice;
+
+    string public baseURI;
+    string public unrevealedURI;
 
     constructor(
         string memory _name,
@@ -72,6 +72,18 @@ contract ExtERC721A is ERC721A, IExtERC721Mintable, Owned, Receive, Withdraw {
         }
 
         return string(abi.encodePacked(baseURI, _toString(tokenId), ".json"));
+    }
+
+    function mintInfo()
+        public
+        view
+        virtual
+        returns (uint256 maxSupply_, uint256 totalMinted_, uint256 mintPrice_, uint256 maxMintPerTx_)
+    {
+        maxSupply_ = maxSupply;
+        totalMinted_ = _totalMinted();
+        mintPrice_ = mintPrice;
+        maxMintPerTx_ = _maxMintPerTx();
     }
 
     // Need to override the owner and supportsInterface for correct use in the next inheritance
