@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "forge-std/Test.sol";
-import "forge-std/console.sol";
 import "solmate/tokens/ERC721.sol";
 
 import "./utils/ExtendedTest.sol";
@@ -24,8 +22,6 @@ contract SimpleMerkleUsage is MerkleProofGuard {
 }
 
 contract MerkleTest is ExtendedTest {
-    using stdStorage for StdStorage;
-
     SimpleMerkleUsage smu = new SimpleMerkleUsage();
 
     address validAddr = 0xB7998316a85884122769878dBa9484a1D2f25b80;

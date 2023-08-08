@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "forge-std/Test.sol";
-import "forge-std/console.sol";
 import "solmate/tokens/ERC721.sol";
 
 import "./utils/ExtendedTest.sol";
@@ -13,8 +11,6 @@ import "@src/ExtERC721.sol";
 import "@src/OFilterTemplate.sol";
 
 contract NftTest is ExtendedTest {
-    using stdStorage for StdStorage;
-
     ExtERC721 public nft;
     ExtERC721A public nftA;
     OFilterTemplate public nftOFilter;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "forge-std/Test.sol";
+import { Test } from "forge-std/Test.sol";
 
 contract ExtendedTest is Test {
     /// @dev `address(bytes20(uint160(uint256(keccak256("hevm cheat code")))))`.
